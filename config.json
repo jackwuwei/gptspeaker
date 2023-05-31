@@ -1,0 +1,25 @@
+{
+  "General": {
+    "SystemPrompt": "You are a friendly, intelligent, and curious assistant who is good at conversation."
+  },
+
+  "AzureCognitiveServices": {
+    "Key": "", 
+    "Region": "",
+    "SpeechRecognitionLanguage": "zh-CN",
+    "SpeechSynthesisVoiceName": "zh-CN-XiaochenNeural",
+    "Rate": "+15%",
+    "WakePhraseModel": "kws.table",
+    "WakeWord": "杰克同学",
+    "StopWord": "停止。"
+  },
+
+  "OpenAI": {
+    "Key": "", 
+    "Model": "gpt-3.5-turbo", 
+    "MaxTokens": 4096,
+    "Temperature": 0.7,
+    "FrequencyPenalty": 0, 
+    "PresencePenalty": 0 
+  }
+}
