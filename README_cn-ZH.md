@@ -6,9 +6,9 @@
 
 # 功能
 
-- 支持实时语音对话。在ChatGPT返回一句话后，你可以听到声音，而不是等待所有ChatGPT回复之前开始语音合成。
+- 支持实时语音对话。在ChatGPT返回一句话后，你可以听到声音，而不是等待所有ChatGPT回复之后才开始语音合成。
 - 支持连续对话，保存所有ChatGPT当前对话的历史。当ChatGPT对话大于4096个令牌（gpt-3.5-turbo）时，早期对话历史将被丢弃。
-- 支持本地唤醒词，就像Siri一样使用。
+- 支持本地识别唤醒词，就像Siri一样使用。
 
 # 语音助手扬声器
 
@@ -23,10 +23,10 @@
 - 软件成本
   - [Azure Cognitive Speech Services](https://aka.ms/friendbot/azurecog)
      - **免费层**：每月5个音频小时和1个并发请求。
-     - **免费$200信用**：新Azure账户在前30天内可以使用。
+     - **免费$200美元额度**：新Azure账户在前30天内可以使用。
   - [OpenAI](https://aka.ms/maker/openai/pricing)
      - **$0.002 / 1K tokens / ~750 words**：ChatGPT（gpt-3.5-turbo）
-     - **免费$18信用**：新OpenAI账户在前90天内可以使用。
+     - **免费$18美元额度**：新OpenAI账户在前90天内可以使用。
 
 # 设置
 
