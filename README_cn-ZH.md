@@ -15,18 +15,18 @@
 ![GPT Speaker](/image/IMG_2668.jpg "GPTSpeaker")
 
 - 硬件成本
-  - $ 用于[Raspberry PI 3/3B/4/4B](https://www.raspberrypi.com/products/)
-  - $ 用于[USB Micro Phone](https://item.taobao.com/item.htm?spm=a230r.1.14.23.315b64e0hmblId&id=668895270969&ns=1&abbucket=1#detail)
-  - $ 用于Aux Speaker
-  - $ 用于SD卡（>= 8GB）（设置树莓派OS）
+  - 购买[Raspberry PI 3/3B/4/4B](https://www.raspberrypi.com/products/)
+  - 购买[USB Micro Phone](https://item.taobao.com/item.htm?spm=a230r.1.14.23.315b64e0hmblId&id=668895270969&ns=1&abbucket=1#detail)
+  - 购买带3.5mm音频口的音箱
+  - SD卡（>= 8GB）（设置树莓派OS）
 
 - 软件成本
   - [Azure Cognitive Speech Services](https://aka.ms/friendbot/azurecog)
-  - **免费层**：每月5个音频小时和1个并发请求。
-  - **免费$200信用**：新Azure账户在前30天内可以使用。
+     - **免费层**：每月5个音频小时和1个并发请求。
+     - **免费$200信用**：新Azure账户在前30天内可以使用。
   - [OpenAI](https://aka.ms/maker/openai/pricing)
-  - **$0.002 / 1K tokens / ~750 words**：ChatGPT（gpt-3.5-turbo）
-  - **免费$18信用**：新OpenAI账户在前90天内可以使用。
+     - **$0.002 / 1K tokens / ~750 words**：ChatGPT（gpt-3.5-turbo）
+     - **免费$18信用**：新OpenAI账户在前90天内可以使用。
 
 # 设置
 
