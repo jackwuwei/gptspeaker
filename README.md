@@ -1,8 +1,14 @@
-# GptSpeaker
-* The GptSpeaker uses a Raspberry Pi (or desktop) to enable spoken conversation with OpenAI large language models. This implementation listens to speech, processes the conversation through the OpenAI service, and responds back.
+# ChatGPT Voice Assistant
+* The ChatGPT Voice Assistant uses a Raspberry Pi (or desktop) to enable spoken conversation with OpenAI large language models. This implementation listens to speech, processes the conversation through the OpenAI service, and responds back. Like Apple Siri, Amazon Alex, Google Nest Home, Mi XiaoAi etc.
 * This project is written in python which supports Linux/Raspbian, macOS, and Windows.
+# Features
+* Supports real-time voice dialogue. After ChatGPT returns a sentence, you can hear the voice instead of waiting for all ChatGPT replies before starting the voice synthesis.
+* Support continuous dialogue, save the history of all ChatGPT current conversations. When the ChatGPT conversation is larger than 4096 tokens (gpt-3.5-turbo), the early conversation history will be discarded.
+* Support local wake word, use it just like Siri.
+# Voice Assistant Speaker
+![GPT Speaker](/image/IMG_2668.jpg "GPTSpeaker")
 * Hardware
-   - $ for [Raspberry PI 3/3B/4/4B](https://aka.ms/maker/rpi/four)
+   - $ for [Raspberry PI 3/3B/4/4B](https://www.raspberrypi.com/products/)
    - $ for [USB Micro Phone](https://item.taobao.com/item.htm?spm=a230r.1.14.23.315b64e0hmblId&id=668895270969&ns=1&abbucket=1#detail)
    - $ for Aux Speaker
    - $ for an SD card (>= 8GB ) (to setup the Raspberry Pi OS)
@@ -16,10 +22,10 @@
 # Setup
 * You will need an instance of Azure Cognitive Services and an OpenAI account. You can run the software on nearly any platform, but let's start with a Raspberry Pi.
 ## Raspberry Pi
-* If you are new to Raspberry Pis, check out this [getting started](https://aka.ms/maker/rpi/gettingstarted) guide.
+* If you are new to Raspberry Pis, check out this [getting started](https://www.raspberrypi.com/documentation/computers/getting-started.html) guide.
 ### 1. OS
 1. Insert an SD card into your PC.
-1. Go to https://aka.ms/maker/rpi/software then download and run the Raspberry Pi Imager. 
+1. Go to https://www.raspberrypi.com/software/ then download and run the Raspberry Pi Imager. 
 1. Click `Choose OS` and select the Ubuntu 22.04.2 LTS (64-bit).
 1. Click `Choose Storage`, select the SD card.
 1. Click `Write` and wait for the imaging to complete.
