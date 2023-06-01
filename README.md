@@ -1,4 +1,5 @@
 # ChatGPT Voice Assistant
+[![中文](https://img.shields.io/badge/lang-cn-yellow.svg)](https://github.com/jackwuwei/gptspeaker/blob/main/README_cn-ZH.md)
 * The ChatGPT Voice Assistant uses a Raspberry Pi (or desktop) to enable spoken conversation with OpenAI large language models. This implementation listens to speech, processes the conversation through the OpenAI service, and responds back. Like Apple Siri, Amazon Alex, Google Nest Home, Mi XiaoAi etc.
 * This project is written in python which supports Linux/Raspbian, macOS, and Windows.
 # Features
