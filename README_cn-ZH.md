@@ -1,6 +1,6 @@
 # ChatGPT语音助手
 [![English](https://img.shields.io/badge/lang-en-yellow.svg)](https://github.com/jackwuwei/gptspeaker/blob/main/README.md)
-* 这是一个关于ChatGPT语音助手的项目，它使用树莓派（或桌面操作系统）来实现与OpenAI大型语言模型的口头对话。这个实现听取语音，通过OpenAI服务处理对话，并回应。就像Apple Siri，Amazon Alex，Google Nest Home，小米小爱等。
+* 这是一个关于ChatGPT语音助手的项目，它使用树莓派（或桌面操作系统）来实现与OpenAI大型语言模型的进行语音对话。完整实现了实现了语音唤醒，语音转文本，再通过OpenAI GPT处理对话，并将文本合成为语音。就像Apple Siri，Amazon Alex，Google Nest Home，小米小爱那样。
 
 * 该项目用Python编写，支持Linux/Raspbian，macOS和Windows。
 
@@ -81,9 +81,7 @@
 
 ## OpenAI
 
-会话扬声器使用OpenAI的模型进行友好的对话。以下是创建新账户和访问
-
-AI模型的步骤。
+* 本项目使用OpenAI的GPT模型进行智能对话。以下是创建新账户和访问AI模型的步骤。
 
 ### 1. OpenAI账户
 
@@ -93,7 +91,7 @@ AI模型的步骤。
    > 注意：如果你是OpenAI的新用户，请查看使用指南（https://beta.openai.com/docs/usage-guidelines）。
 1. 在右上角点击你的账户。点击`View API keys`。
 1. 点击`+ Create new secret key`。复制生成的密钥并将其保存在一个安全的地方以备后用。
-   _如果你想直接玩大型语言模型，可以在登录https://aka.ms/maker/openai 后在页面顶部查看 https://platform.openai.com/playground?mode=chat。_
+   _如果你想直接体验大型语言模型，可以在登录https://aka.ms/maker/openai 后在页面顶部查看 https://platform.openai.com/playground?mode=chat。_
 
 # 代码
 
