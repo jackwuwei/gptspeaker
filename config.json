@@ -9,9 +9,9 @@
     "SpeechRecognitionLanguage": "zh-CN",
     "SpeechSynthesisVoiceName": "zh-CN-XiaochenNeural",
     "Rate": "+15%",
-    "WakePhraseModel": "kws.table",
-    "WakeWord": "杰克同学",
-    "StopWord": "停止。"
+    "WakePhraseModel": "heygpt.table",
+    "WakeWord": "Hey GPT",
+    "StopWord": "Stop."
   },
 
   "OpenAI": {

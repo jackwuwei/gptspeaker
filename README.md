@@ -104,7 +104,7 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
    python3 gptspeaker.py
    ```
 ## 2. (Optional) Create a custom wake phrase
-The code base has a default wake phrase (`"杰克同学"`) already, which I suggest you use first. If you want to create your own (free!) custom wake word, then follow the steps below.
+The code base has a default wake phrase (`"Hey GPT"`) already, which I suggest you use first. If you want to create your own (free!) custom wake word, then follow the steps below.
   1. Create a custom keyword model using the directions here: https://aka.ms/hackster/microsoft/wakeword. 
   1. Download the model, extract the `.table` file and copy it to source root directory.
   1. Update `config.json` file to include your wake phrase file in the build.
