@@ -158,7 +158,7 @@ async def chat_with_open_ai():
 
     ending_punctuations = (".", "?", "!", ";")
     if (speech_config.speech_recognition_language == "zh-CN"):
-        ending_punctuations = ("。", "？", "！", "；")
+        ending_punctuations = ("。", "？", "！", "；", "”")
 
     # The language of the voice that responds on behalf of Azure OpenAI.
     speech_config.speech_synthesis_voice_name = config.AzureCognitiveServices.SpeechSynthesisVoiceName
