@@ -144,6 +144,8 @@ async def chat_with_open_ai():
 
     # OpenAI API Key
     openai.api_key = config.OpenAI.Key
+    if config.OpenAI.ApiBase:
+        openai.api_base = config.OpenAI.ApiBase
     gpt_model = config.OpenAI.Model
 
     # This example requires config.json
