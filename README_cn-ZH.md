@@ -12,7 +12,8 @@
 
 # 语音助手扬声器
 
-![GPT Speaker](/image/IMG_2668.jpg "GPTSpeaker")
+[![](https://i2.hdslb.com/bfs/archive/2685a996fe7f36097dfe965e15b481da00a100f3.jpg@640w_400h_1c_!web-space-index-myvideo.webp)](https://player.bilibili.com/player.html?aid=401892756&bvid=BV1Wo4y1K7dW&cid=1151926886&page=1)
+> 点击上面的图片播放👆
 
 - 硬件成本
   - 购买[Raspberry PI 3/3B/4/4B](https://www.raspberrypi.com/products/)
