@@ -6,7 +6,6 @@
 """
 Smart Speaker using Azure Speech SDK and OpenAI ChatGPT API
 """
-import os
 import azure.cognitiveservices.speech as speechsdk
 import openai
 import asyncio
