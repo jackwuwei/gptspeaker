@@ -12,7 +12,7 @@
 
 # 语音助手扬声器
 
-[![](./image/embed.png)](https://www.bilibili.com/video/BV1Wo4y1K7dW/){:target="_blank"}
+[![](./image/embed.png)](https://www.bilibili.com/video/BV1Wo4y1K7dW/)
 > 点击上面的图片播放👆
 
 - 硬件成本
