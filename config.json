@@ -16,8 +16,8 @@
 
   "OpenAI": {
     "Key": "", 
-    "ApiBase": "",
     "Model": "gpt-3.5-turbo", 
+    "ApiBase": "",
     "MaxTokens": 4096,
     "Temperature": 0.7,
     "FrequencyPenalty": 0, 
