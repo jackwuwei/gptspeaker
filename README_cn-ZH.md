@@ -72,7 +72,7 @@
 1. 在顶部的搜索栏中输入`Cognitive Services`。在`Marketplace`下选择`Cognitive Services`。（可能需要几秒钟才能显示。）
 1. 确认选择了正确的订阅。在`Resource Group`下选择`Create New`。输入一个资源组名称（例如`conv-speak-rg`）。
 1. 选择一个区域和你的Azure Cognitive Services实例的名称（例如`my-conv-speak-cog-001`）。
-   > 注意：建议选择EastUS，WestEurope或SoutheastAsia，因为这些区域通常支持最多的功能。
+   > 注意：建议选择EastAsia或SoutheastAsia，因为这些区域在中国访问比较快。
 1. 点击`Review + Create`。验证通过后，点击`Create`。
 1. 部署完成后，你可以点击`Go to resource`查看你的Azure Cognitive Services资源。
 1. 在左侧导航栏中，选择`Resourse Management`下的`Keys and Endpoint`。
