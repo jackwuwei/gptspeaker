@@ -12,13 +12,14 @@ import asyncio
 import json
 from collections import namedtuple
 import tiktoken
+import time
 
 EOF = object()
 
 # Load config.json
 def load_config():
     try:
-        with open('config.json') as f:
+        with open('config.json', encoding='utf-8') as f:
             config = json.load(f, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
             if not config.AzureCognitiveServices.Key or not config.AzureCognitiveServices.Region or not config.OpenAI.Key:
                 raise ValueError("Missing required configuration.")
@@ -100,10 +101,7 @@ async def text_to_speech_async(speech_synthesizer, queue):
                 print("Error details: {}".format(cancellation_details.error_details))
 
 # Detect keyword and wakeup
-def detect_keyword(model, keyword):
-    # Create a local keyword recognizer with the default microphone device for input.
-    keyword_recognizer = speechsdk.KeywordRecognizer()
-
+def detect_keyword(recognizer, model, keyword, audio_config):
     done = False
 
     def recognized_cb(evt):
@@ -125,16 +123,21 @@ def detect_keyword(model, keyword):
         done = True
 
     # Connect callbacks to the events fired by the keyword recognizer.
-    keyword_recognizer.recognized.connect(recognized_cb)
-    keyword_recognizer.canceled.connect(canceled_cb)
+    recognizer.recognized.connect(recognized_cb)
+    recognizer.canceled.connect(canceled_cb)
 
     # Start keyword recognition.
-    result_future = keyword_recognizer.recognize_once_async(model)
+    recognizer.start_keyword_recognition(model)
     print('Say something starting with "{}" followed by whatever you want...'.format(keyword))
-    result = result_future.get()
+    while not done:
+        time.sleep(.5)
+
+    recognizer.recognized.disconnect_all()
+    recognizer.canceled.disconnect_all()
+    recognizer.stop_keyword_recognition()
 
     # Read result audio (incl. the keyword).
-    return result.reason == speechsdk.ResultReason.RecognizedKeyword
+    return done
 
 # Continuously listens for speech input to recognize and send as text to Azure OpenAI
 async def chat_with_open_ai():
@@ -173,7 +176,7 @@ async def chat_with_open_ai():
         print("OpenAI is listening. Say '{}' to start.".format(config.AzureCognitiveServices.WakeWord))
         try:
             # Detect keyword
-            if (not detect_keyword(kws_model, config.AzureCognitiveServices.WakeWord)):
+            if (not detect_keyword(speech_recognizer, kws_model, config.AzureCognitiveServices.WakeWord, audio_config)):
                 continue
 
             # Get audio from the microphone and then send it to the TTS service.
