@@ -46,7 +46,7 @@ def truncate_conversation(conversation, max_tokens):
     conversation = list(reversed(truncated_conversation))
 
 # Prompts OpenAI with a request and async send sentences to queue.
-async def ask_openai_async(model, prompt, max_token, conversation, queue, ending):
+async def ask_openai_async(client, model, prompt, max_token, conversation, queue, ending):
     # Append user questions
     conversation.append({"role":"user","content":prompt}) 
 
@@ -61,15 +61,17 @@ async def ask_openai_async(model, prompt, max_token, conversation, queue, ending
     full_answer = ""
 
     # Ask OpenAI
-    response = await openai.ChatCompletion.acreate(model=model, 
+    response = await client.chat.completions.create(model=model, 
                                                    messages=conversation,
                                                    stream=True)
     
     # iterate through the stream of events
     async for chunk in response:
-        chunk_message = chunk['choices'][0]['delta'].get('content', '').replace('\n', ' ').strip()  # extract the message
+        chunk_message = chunk.choices[0].delta.content
         if not chunk_message:
             continue
+        else:
+            chunk_message = chunk_message.replace('\n', ' ').strip()  # extract the message
 
         collected_messages += chunk_message  # save the message
         if collected_messages.endswith(ending): # One sentence
@@ -144,10 +146,11 @@ async def chat_with_open_ai():
     # Load config.json
     config = load_config()
 
-    # OpenAI API Key
-    openai.api_key = config.OpenAI.Key
+    # Create async OpenAI client
+    client = openai.AsyncClient(api_key=config.OpenAI.Key);
+    
     if config.OpenAI.ApiBase:
-        openai.api_base = config.OpenAI.ApiBase
+        client.base_url = config.OpenAI.ApiBase
     gpt_model = config.OpenAI.Model
 
     # This example requires config.json
@@ -194,7 +197,8 @@ async def chat_with_open_ai():
                 queue = asyncio.Queue()
 
                 # Create async task for ask openai
-                task_ask_gpt = asyncio.create_task(ask_openai_async(gpt_model, 
+                task_ask_gpt = asyncio.create_task(ask_openai_async(client,
+                                                                    gpt_model, 
                                                                     speech_recognition_result.text, 
                                                                     config.OpenAI.MaxTokens, 
                                                                     conversation, 
