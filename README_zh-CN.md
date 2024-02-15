@@ -124,7 +124,7 @@
    ```
 1. 安装依赖库
     ```bash
-    pip3 install azure-cognitiveservices-speech openai tiktoken
+    pip3 -r install requirements.txt
     ```
 1. 运行代码！
    ```bash
