@@ -103,7 +103,7 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
    pip3 -r install requirements.txt
    ```
 1. Run the code
-  ```bash
+   ```bash
    python3 gptspeaker.py
    ```
 ## 2. (Optional) Create a custom wake phrase
