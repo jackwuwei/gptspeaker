@@ -71,7 +71,7 @@ async def ask_openai_async(client, model, prompt, max_token, conversation, queue
         if not chunk_message:
             continue
         else:
-            chunk_message = chunk_message.replace('\n', ' ').strip()  # extract the message
+            chunk_message = chunk_message.replace('\n', ' ')  # extract the message
 
         collected_messages += chunk_message  # save the message
         if collected_messages.endswith(ending): # One sentence
