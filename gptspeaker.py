@@ -21,7 +21,7 @@ def load_config():
     try:
         with open('config.json', encoding='utf-8') as f:
             config = json.load(f, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
-            if not config.AzureCognitiveServices.Key or not config.AzureCognitiveServices.Region or not config.OpenAI.Key:
+            if not config.AzureCognitiveServices.Key or not config.AzureCognitiveServices.Region or (not config.OpenAI.Key and not config.AzureOpenAI.Key):
                 raise ValueError("Missing required configuration.")
             return config
     except FileNotFoundError:
@@ -67,6 +67,9 @@ async def ask_openai_async(client, model, prompt, max_token, conversation, queue
     
     # iterate through the stream of events
     async for chunk in response:
+        if not chunk.choices:
+            continue
+
         chunk_message = chunk.choices[0].delta.content
         if not chunk_message:
             continue
@@ -141,17 +144,27 @@ def detect_keyword(recognizer, model, keyword, audio_config):
     # Read result audio (incl. the keyword).
     return done
 
+def create_aysnc_client(config):
+    # Create async OpenAI Client
+    if config.OpenAI.Key:
+        client = openai.AsyncClient(api_key=config.OpenAI.Key)
+        if config.OpenAI.ApiBase:
+            client.base_url = config.OpenAI.ApiBase
+        return client, config.OpenAI.Model
+    elif config.AzureOpenAI.Key:
+        client = openai.AsyncAzureOpenAI(api_key=config.AzureOpenAI.Key,
+                                         api_version=config.AzureOpenAI.api_version,
+                                         azure_endpoint=config.AzureOpenAI.Endpoint
+        )
+        return client, config.AzureOpenAI.Model
+
 # Continuously listens for speech input to recognize and send as text to Azure OpenAI
 async def chat_with_open_ai():
     # Load config.json
     config = load_config()
 
-    # Create async OpenAI client
-    client = openai.AsyncClient(api_key=config.OpenAI.Key);
-    
-    if config.OpenAI.ApiBase:
-        client.base_url = config.OpenAI.ApiBase
-    gpt_model = config.OpenAI.Model
+    # Create async client
+    client, gpt_model = create_aysnc_client(config=config)
 
     # This example requires config.json
     speech_config = speechsdk.SpeechConfig(subscription=config.AzureCognitiveServices.Key, 

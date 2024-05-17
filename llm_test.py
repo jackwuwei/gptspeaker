@@ -1,16 +1,13 @@
 import asyncio
 import unittest
 import openai
-from gptspeaker import ask_openai_async, load_config
+from gptspeaker import ask_openai_async, load_config, create_aysnc_client
 
 class TestOpenAI(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         config = load_config()
         self.queue = asyncio.Queue()
-        self.client = openai.AsyncClient(api_key=config.OpenAI.Key)
-        if config.OpenAI.ApiBase:
-            self.client.base_url = config.OpenAI.ApiBase
-        self.gpt_model = config.OpenAI.Model
+        self.client, self.gpt_model = create_aysnc_client(config=config)
         self.tokens = config.OpenAI.MaxTokens
         self.conversation = [{"role": "system", "content": config.General.SystemPrompt}]
 

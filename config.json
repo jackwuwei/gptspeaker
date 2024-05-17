@@ -14,10 +14,17 @@
     "StopWord": "Stop."
   },
 
+  "AzureOpenAI": {
+    "Key": "",
+    "api_version": "2024-02-01",
+    "Endpoint": "",
+    "Model": ""
+  },
+
   "OpenAI": {
     "Key": "", 
     "Model": "gpt-3.5-turbo", 
-    "ApiBase": "",
+	  "ApiBase": "",
     "MaxTokens": 4096,
     "Temperature": 0.7,
     "FrequencyPenalty": 0, 
