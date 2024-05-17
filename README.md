@@ -60,7 +60,7 @@ The conversational speaker uses Azure Cognitive Service for speech-to-text and t
   > Windows 11 users: If the application is stalling when calling the text-to-speech API, make sure you have applied all current security updates ([link](https://learn.microsoft.com/en-us/windows/release-health/resolved-issues-windows-11-22h2#2924msgdesc)).
 
 ## OpenAI
-The conversational speaker uses OpenAI's models to hold a friendly conversation. Below are the steps to create a new account and access the AI models.
+The conversational speaker uses OpenAI's models to hold a friendly conversation. Below are the steps to create a new account and access the AI models. Supports OpenAI official API or Azure OpenAI API, just choose one.
 ### 1. OpenAI Account
   1. In a web browser, navigate to https://aka.ms/maker/openai. Click `Sign up`.
         > NOTE: can use a Google account, Microsoft account, or email to create a new account.
@@ -71,6 +71,7 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
 
   _If you are curious to play with the large language models directly, check out the https://platform.openai.com/playground?mode=chat at the top of the page after logging in to https://aka.ms/maker/openai._
 ### 2. Azure OpenAI Account
+> Choose between OpenAI official account or Azure OpenAI account
    1. Create an Azure Account
       * If you don't have an Azure account, go to the [Azure official website](https://azure.microsoft.com/en-us/free/) to sign up for an account. Azure offers a free account option, and new users can get a certain amount of free credits for testing and learning.
    1. Apply for Access
