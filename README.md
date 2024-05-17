@@ -27,7 +27,7 @@
 ### 1. OS
 1. Insert an SD card into your PC.
 1. Go to https://www.raspberrypi.com/software/ then download and run the Raspberry Pi Imager. 
-1. Click `Choose OS` and select the Ubuntu 22.04.2 LTS (64-bit).
+1. Click `Choose OS` and select the Raspberry Pi OS (64-bit) or Ubuntu 22.04.2 LTS (64-bit) .
 1. Click `Choose Storage`, select the SD card.
 1. Click `Write` and wait for the imaging to complete.
 1. Put the SD card into your Raspberry Pi and connect a keyboard, mouse, and monitor.
@@ -70,7 +70,13 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
   1. Click `+ Create new secret key`. Copy the generated key and save it in a secure location for later.
 
   _If you are curious to play with the large language models directly, check out the https://platform.openai.com/playground?mode=chat at the top of the page after logging in to https://aka.ms/maker/openai._
-
+### 2. Azure OpenAI Account
+   1. Create an Azure Account
+      * If you don't have an Azure account, go to the [Azure official website](https://azure.microsoft.com/en-us/free/) to sign up for an account. Azure offers a free account option, and new users can get a certain amount of free credits for testing and learning.
+   1. Apply for Access
+      * On the [Azure OpenAI service page](https://aka.ms/oai/access), click the "Apply for Access" button. This will take you to the application page where you need to fill in some necessary information, including your company name, use case, etc.
+   1. Configure and Use
+      * Once you have access, you can create a new OpenAI service resource in the Azure portal. After creation, you can get the API key and start using the Azure OpenAI service following the official documentation.
 # The Code
 ## 1. Code Configuration
 1. The Python Speech SDK package is available for Windows (x64 and x86), Mac x64 (macOS X version 10.14 or later), Mac arm64 (macOS version 11.0 or later), and Linux
@@ -95,7 +101,16 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
 
         "OpenAI": {
             "Key": "OpenAIKey", 
-        }
+        },
+
+        // Just choose one of the two OpenAI above
+         "AzureOpenAI": 
+         {
+            "Key": "", // Key 1 or Key 2
+            "api_version": "2024-02-01",
+            "Endpoint": "", // Endpoint
+            "Model": "" // Azure AI Studio deployment name 
+      }
     }
     ```
 1. Install requirements

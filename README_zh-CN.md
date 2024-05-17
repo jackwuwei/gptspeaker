@@ -41,7 +41,7 @@
 
 1. 将SD卡插入你的PC。
 1. 访问https://www.raspberrypi.com/software/，然后下载并运行Raspberry Pi Imager。
-1. 点击`Choose OS`并选择Ubuntu 22.04.2 LTS (64-bit)。
+1. 点击`Choose OS`并选择Raspberry Pi OS (64-bit)或Ubuntu 22.04.2 LTS (64-bit)。
 1. 点击`Choose Storage`，选择SD卡。
 1. 点击`Write`并等待镜像完成
 
@@ -82,7 +82,7 @@
 
 ## OpenAI
 
-* 本项目使用OpenAI的GPT模型进行智能对话。以下是创建新账户和访问AI模型的步骤。
+* 本项目使用OpenAI的GPT模型进行智能对话。以下是创建新账户和访问AI模型的步骤。支持OpenAI官方API或者Azure OpenAI API，二选一即可。
 
 ### 1. OpenAI账户
 
@@ -94,6 +94,15 @@
 1. 点击`+ Create new secret key`。复制生成的密钥并将其保存在一个安全的地方以备后用。
    _如果你想直接体验大型语言模型，可以在登录https://aka.ms/maker/openai 后在页面顶部查看 https://platform.openai.com/playground?mode=chat。_
 
+### 2. Azure OpenAI账号
+> OpenAI官方账号和Azure OpenAI账号二选一
+1. 创建Azure账户 (Create an Azure Account)
+   * 如果还没有Azure账户，请先前往[Azure官方网站](https://azure.microsoft.com/zh-cn/free/)注册一个账户。Azure提供免费账户选项，新用户可以获得一定的免费额度用于测试和学习。
+1. 申请访问权限 (Apply for Access)
+   * 在[Azure OpenAI服务页面](https://aka.ms/oai/access)，点击“申请访问权限”按钮。这将引导你到申请页面，在这里你需要填写一些必要的信息，包括公司名称、使用案例等。
+   * 提交申请 (Submit the Application),填写完申请表单后，点击提交。Azure团队会对你的申请进行审核，审核通过后会发送电子邮件通知你。
+1. 配置和使用 (Configure and Use)
+   * 一旦获得访问权限，你可以在Azure门户中创建一个新的OpenAI服务资源。创建完成后，你可以获取API密钥，并根据官方文档开始使用Azure OpenAI服务。
 # 代码
 
 ## 1. 代码配置
@@ -113,13 +122,23 @@
 1. 设置你的API密钥：将config.json中的`{AzureCognitiveServices.Key}`和`{AzureCognitiveServices.Region}`替换为你的OpenAI API密钥，将`{OpenAI.Key}`替换为你的OpenAI API密钥。
    ```json
    {
-   "AzureCognitiveServices": {
-   "Key": "AzureCognitiveServicesKey", 
-   "Region": "AzureCognitiveServicesRegion",
-   },
-   "OpenAI": {
-   "Key": "OpenAIKey", 
-   }
+      "AzureCognitiveServices": 
+      {
+         "Key": "AzureCognitiveServicesKey", 
+         "Region": "AzureCognitiveServicesRegion",
+      },
+      "OpenAI": 
+      {
+         "Key": "OpenAIKey", 
+      },
+      // 与上面的OpenAI二选一即可
+      "AzureOpenAI": 
+      {
+         "Key": "", // 密钥 1 或者 密钥 2
+         "api_version": "2024-02-01",
+         "Endpoint": "", // 终结点
+         "Model": "" // Azure AI Studio的部署名
+     }
    }
    ```
 1. 安装依赖库
