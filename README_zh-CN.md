@@ -92,7 +92,7 @@
    > 注意：如果你是OpenAI的新用户，请查看[使用指南](https://beta.openai.com/docs/usage-guidelines)。
 1. 在右上角点击你的账户。点击`View API keys`。
 1. 点击`+ Create new secret key`。复制生成的密钥并将其保存在一个安全的地方以备后用。
-   _如果你想直接体验大型语言模型，可以在登录[这里](https://aka.ms/maker/openai) 后在[页面顶部查看] (https://platform.openai.com/playground?mode=chat)。_
+   _如果你想直接体验大型语言模型，可以在登录[这里](https://aka.ms/maker/openai) 后在[页面顶部查看](https://platform.openai.com/playground?mode=chat)。_
 
 ### 2. Azure OpenAI账号
 > OpenAI官方账号和Azure OpenAI账号二选一
