@@ -86,7 +86,7 @@
 
 ### 1. OpenAI账户
 
-1. 在网络浏览器中，访问(这里)[https://aka.ms/maker/openai]。点击`Sign up`。
+1. 在网络浏览器中，访问[这里](https://aka.ms/maker/openai)。点击`Sign up`。
    > 注意：可以使用Google账户，Microsoft账户或电子邮件创建新账户。
 1. 完成注册过程（例如，创建密码，验证你的电子邮件等）。
    > 注意：如果你是OpenAI的新用户，请查看[使用指南](https://beta.openai.com/docs/usage-guidelines)。
