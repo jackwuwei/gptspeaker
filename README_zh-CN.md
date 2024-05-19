@@ -60,12 +60,12 @@
 
 ### 1. Azure账户
 
-1. 在网络浏览器中，访问https://aka.ms/friendbot/azure，点击`Try Azure for Free`。
+1. 在网络浏览器中，访问[这里](https://aka.ms/friendbot/azure)，点击`Try Azure for Free`。
 1. 点击`Start Free`开始创建一个免费的Azure账户。
 1. 使用你的Microsoft或GitHub账户登录。
 1. 登录后，你将被提示输入一些信息。
    > 注意：即使这是一个免费账户，Azure仍然需要信用卡信息。除非你以后更改设置，否则你不会被收费。
-1. 在你的账户设置完成后，访问https://aka.ms/friendbot/azureportal。
+1. 在你的账户设置完成后，访问[这里](https://aka.ms/friendbot/azureportal)。
 
 ### 2. Azure Cognitive Services
 
