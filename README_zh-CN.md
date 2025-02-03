@@ -41,7 +41,7 @@
 ### 1. 操作系统
 
 1. 将SD卡插入你的PC。
-1. 访问https://www.raspberrypi.com/software/，然后下载并运行Raspberry Pi Imager。
+1. 访问[树莓派网站](https://www.raspberrypi.com/software/)，然后下载并运行Raspberry Pi Imager。
 1. 点击`Choose OS`并选择Raspberry Pi OS (64-bit)或Ubuntu 22.04.2 LTS (64-bit)。
 1. 点击`Choose Storage`，选择SD卡。
 1. 点击`Write`并等待镜像完成
@@ -61,16 +61,16 @@
 
 ### 1. Azure账户
 
-1. 在网络浏览器中，访问https://aka.ms/friendbot/azure，点击`Try Azure for Free`。
+1. 在网络浏览器中，访问[这里](https://aka.ms/friendbot/azure)，点击`Try Azure for Free`。
 1. 点击`Start Free`开始创建一个免费的Azure账户。
 1. 使用你的Microsoft或GitHub账户登录。
 1. 登录后，你将被提示输入一些信息。
    > 注意：即使这是一个免费账户，Azure仍然需要信用卡信息。除非你以后更改设置，否则你不会被收费。
-1. 在你的账户设置完成后，访问https://aka.ms/friendbot/azureportal。
+1. 在你的账户设置完成后，访问[这里](https://aka.ms/friendbot/azureportal)。
 
 ### 2. Azure Cognitive Services
 
-1. 在https://aka.ms/friendbot/azureportal 登录你的账户。
+1. 在[这个地址](https://aka.ms/friendbot/azureportal) 登录你的账户。
 1. 在顶部的搜索栏中输入`Cognitive Services`。在`Marketplace`下选择`Cognitive Services`。（可能需要几秒钟才能显示。）
 1. 确认选择了正确的订阅。在`Resource Group`下选择`Create New`。输入一个资源组名称（例如`conv-speak-rg`）。
 1. 选择一个区域和你的Azure Cognitive Services实例的名称（例如`my-conv-speak-cog-001`）。
@@ -87,13 +87,13 @@
 
 ### 1. OpenAI账户
 
-1. 在网络浏览器中，访问https://aka.ms/maker/openai。点击`Sign up`。
+1. 在网络浏览器中，访问[这里](https://aka.ms/maker/openai)。点击`Sign up`。
    > 注意：可以使用Google账户，Microsoft账户或电子邮件创建新账户。
 1. 完成注册过程（例如，创建密码，验证你的电子邮件等）。
-   > 注意：如果你是OpenAI的新用户，请查看使用指南（https://beta.openai.com/docs/usage-guidelines）。
+   > 注意：如果你是OpenAI的新用户，请查看[使用指南](https://beta.openai.com/docs/usage-guidelines)。
 1. 在右上角点击你的账户。点击`View API keys`。
 1. 点击`+ Create new secret key`。复制生成的密钥并将其保存在一个安全的地方以备后用。
-   _如果你想直接体验大型语言模型，可以在登录https://aka.ms/maker/openai 后在页面顶部查看 https://platform.openai.com/playground?mode=chat。_
+   _如果你想直接体验大型语言模型，可以在登录[这里](https://aka.ms/maker/openai) 后在[页面顶部查看](https://platform.openai.com/playground?mode=chat)。_
 
 ### 2. Azure OpenAI账号
 > OpenAI官方账号和Azure OpenAI账号二选一
@@ -117,7 +117,7 @@
    sudo apt-get update
    sudo apt-get install libssl-dev libasound2
    ```
-1. 在**Ubuntu 22.04 LTS**上，还需要下载并安装最新的**libssl1.1**包，例如从http://security.ubuntu.com/ubuntu/pool/main/o/openssl/。
+1. 在**Ubuntu 22.04 LTS**上，还需要下载并安装最新的**libssl1.1**包，例如从[这里](http://security.ubuntu.com/ubuntu/pool/main/o/openssl/)。
 1. 克隆仓库。
    ```bash
    git clone https://github.com/jackwuwei/gptspeaker.git
@@ -159,7 +159,7 @@
 
 * 代码库已经有一个默认的唤醒短语（`"Hey GPT"`），我建议你首先使用。如果你想创建你自己的（免费的！）自定义唤醒词，那么请按照以下步骤操作。
 
-1. 使用这里的指导创建一个自定义关键词模型：https://aka.ms/hackster/microsoft/wakeword。
+1. 使用这里的指导创建一个自定义关键词模型：[链接](https://aka.ms/hackster/microsoft/wakeword)。
 1. 下载模型，提取`.table`文件并将其复制到源根目录。
 1. 更新`config.json`文件，将你的唤醒词文件包含在构建中。
    ```json
