@@ -1,6 +1,6 @@
 # ChatGPT/DeepSeek语音助手
 [![English](https://img.shields.io/badge/lang-en-yellow.svg)](https://github.com/jackwuwei/gptspeaker/blob/main/README.md)
-* 这是一个关于ChatGPT/DeepSeek语音助手的项目，它使用树莓派（或桌面操作系统）来实现与OpenAI/DeepSeek大型语言模型的进行语音对话。完整实现了实现了语音唤醒，语音转文本，再通过OpenAI GPT处理对话，并将文本合成为语音。就像Apple Siri，Amazon Alex，Google Nest Home，小米小爱那样。
+* 这是一个关于ChatGPT/DeepSeek语音助手的项目，它使用树莓派（或桌面操作系统）来实现与OpenAI/DeepSeek大型语言模型的进行语音对话。完整实现了实现了语音唤醒，语音转文本，再通过OpenAI或DeepSeek处理对话，并将文本合成为语音。就像Apple Siri，Amazon Alex，Google Nest Home，小米小爱那样。
 
 * 该项目用Python编写，支持Linux/Raspbian，macOS和Windows。
 
