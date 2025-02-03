@@ -186,7 +186,7 @@ async def chat_with_open_ai():
 
     # The phrase your keyword recognition model triggers on.
     kws_model = speechsdk.KeywordRecognitionModel(config.AzureCognitiveServices.WakePhraseModel)
-    conversation = [{"role": "system", "content": config.General.SystemPrompt}]
+    conversation = []
 
     while True:
         print("OpenAI is listening. Say '{}' to start.".format(config.AzureCognitiveServices.WakeWord))

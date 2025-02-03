@@ -1,13 +1,13 @@
-# ChatGPT语音助手
+# ChatGPT/DeepSeek语音助手
 [![English](https://img.shields.io/badge/lang-en-yellow.svg)](https://github.com/jackwuwei/gptspeaker/blob/main/README.md)
-* 这是一个关于ChatGPT语音助手的项目，它使用树莓派（或桌面操作系统）来实现与OpenAI大型语言模型的进行语音对话。完整实现了实现了语音唤醒，语音转文本，再通过OpenAI GPT处理对话，并将文本合成为语音。就像Apple Siri，Amazon Alex，Google Nest Home，小米小爱那样。
+* 这是一个关于ChatGPT/DeepSeek语音助手的项目，它使用树莓派（或桌面操作系统）来实现与OpenAI/DeepSeek大型语言模型的进行语音对话。完整实现了实现了语音唤醒，语音转文本，再通过OpenAI GPT处理对话，并将文本合成为语音。就像Apple Siri，Amazon Alex，Google Nest Home，小米小爱那样。
 
 * 该项目用Python编写，支持Linux/Raspbian，macOS和Windows。
 
 # 功能
 
-- 支持实时语音对话。在ChatGPT返回一句话后，你可以听到声音，而不是等待所有ChatGPT回复之后才开始语音合成。
-- 支持连续对话，保存所有ChatGPT当前对话的历史。当ChatGPT对话大于4096个令牌（gpt-3.5-turbo）时，早期对话历史将被丢弃。
+- 支持实时语音对话。在ChatGPT/DeepSeek返回一句话后，你可以听到声音，而不是等待所有ChatGPT回复之后才开始语音合成。
+- 支持连续对话，保存所有ChatGPT/DeepSeek当前对话的历史。当对话大于指定的令牌数时，早期对话历史将被丢弃。
 - 支持本地识别唤醒词，就像Siri一样使用。
 
 # 语音助手扬声器
@@ -28,7 +28,8 @@
   - [OpenAI](https://aka.ms/maker/openai/pricing)
      - **$0.002 / 1K tokens / ~750 words**：ChatGPT（gpt-3.5-turbo）
      - **免费$18美元额度**：新OpenAI账户在前90天内可以使用。
-
+  - [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
+    - **$2.19 / 1M tokens**: DeepSeek R1
 # 设置
 
 - 你需要一个Azure Cognitive Services实例和一个OpenAI账户。你可以在几乎任何平台上运行软件，但让我们从树莓派开始。
@@ -103,6 +104,8 @@
    * 提交申请 (Submit the Application),填写完申请表单后，点击提交。Azure团队会对你的申请进行审核，审核通过后会发送电子邮件通知你。
 1. 配置和使用 (Configure and Use)
    * 一旦获得访问权限，你可以在Azure门户中创建一个新的OpenAI服务资源。创建完成后，你可以获取API密钥，并根据官方文档开始使用Azure OpenAI服务。
+## DeepSeek
+[DeepSeek API官方网站](https://platform.deepseek.com/)由于受到不明来源的攻击导致服务不可用，你可以注册 [硅基流动](https://cloud.siliconflow.cn/i/wkFOt1Ki)账号并且创建API密钥。
 # 代码
 
 ## 1. 代码配置
@@ -129,7 +132,9 @@
       },
       "OpenAI": 
       {
-         "Key": "OpenAIKey", 
+         "Key": "OpenAI API Key或者DeepSeek API密钥",
+         "Model": "OpenAI模型名称，比如：gpt-3.5-turbo，更多模型参考https://platform.openai.com/docs/models 或者 DeepSeek模型名称，比如：deepseek-ai/DeepSeek-R1，更多模型参考 https://docs.siliconflow.cn/capabilities/reasoning",
+         "ApiBase": "OpenAI不需要填这个字段，如果是DeepSeek的话填https://api.siliconflow.cn/v1" 
       },
       // 与上面的OpenAI二选一即可
       "AzureOpenAI": 

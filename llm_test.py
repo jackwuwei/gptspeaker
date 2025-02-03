@@ -9,7 +9,7 @@ class TestOpenAI(unittest.IsolatedAsyncioTestCase):
         self.queue = asyncio.Queue()
         self.client, self.gpt_model = create_aysnc_client(config=config)
         self.tokens = config.OpenAI.MaxTokens
-        self.conversation = [{"role": "system", "content": config.General.SystemPrompt}]
+        self.conversation = []
 
     async def ask_openai_with_ending(self, text, ending):
         await ask_openai_async(self.client, self.gpt_model, text, self.tokens, self.conversation, self.queue, ending)

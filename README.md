@@ -1,10 +1,10 @@
-# ChatGPT Voice Assistant
+# ChatGPT/DeepSeek Voice Assistant
 [![中文](https://img.shields.io/badge/lang-cn-yellow.svg)](https://github.com/jackwuwei/gptspeaker/blob/main/README_zh-CN.md)
-* The ChatGPT Voice Assistant uses a Raspberry Pi (or desktop) to enable spoken conversation with OpenAI large language models. This implementation listens to speech, processes the conversation through the OpenAI service, and responds back. Like Apple Siri, Amazon Alex, Google Nest Home, Mi XiaoAi etc.
+* The ChatGPT/DeepSeek Voice Assistant uses a Raspberry Pi (or desktop) to enable spoken conversation with OpenAI or DeepSeek large language models. This implementation listens to speech, processes the conversation through the OpenAI/DeepSeek service, and responds back. Like Apple Siri, Amazon Alex, Google Nest Home, Mi XiaoAi etc.
 * This project is written in python which supports Linux/Raspbian, macOS, and Windows.
 # Features
-* Supports real-time voice dialogue. After ChatGPT returns a sentence, you can hear the voice instead of waiting for all ChatGPT replies before starting the voice synthesis.
-* Support continuous dialogue, save the history of all ChatGPT current conversations. When the ChatGPT conversation is larger than 4096 tokens (gpt-3.5-turbo), the early conversation history will be discarded.
+* Supports real-time voice dialogue. After ChatGPT returns a sentence, you can hear the voice instead of waiting for all ChatGPT/DeepSeek replies before starting the voice synthesis.
+* Support continuous dialogue, save the history of all ChatGPT/DeepSeek current conversations. When the ChatGPT conversation is larger than 4096 tokens (gpt-3.5-turbo), the early conversation history will be discarded.
 * Support local wake word, use it just like Siri.
 # Voice Assistant Speaker
 ![GPT Speaker](/image/IMG_2668.jpg "GPTSpeaker")
@@ -20,6 +20,8 @@
   - [OpenAI](https://aka.ms/maker/openai/pricing)
     - **$0.002 / 1K tokens / ~750 words**: ChatGPT (gpt-3.5-turbo)
     - **Free $18 credit**: With a new OpenAI account that can be used during your first 90 days.
+  - [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
+    - **$2.19 / 1M tokens**: DeepSeek R1
 # Setup
 * You will need an instance of Azure Cognitive Services and an OpenAI account. You can run the software on nearly any platform, but let's start with a Raspberry Pi.
 ## Raspberry Pi
@@ -78,6 +80,8 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
       * On the [Azure OpenAI service page](https://aka.ms/oai/access), click the "Apply for Access" button. This will take you to the application page where you need to fill in some necessary information, including your company name, use case, etc.
    1. Configure and Use
       * Once you have access, you can create a new OpenAI service resource in the Azure portal. After creation, you can get the API key and start using the Azure OpenAI service following the official documentation.
+## DeepSeek
+The [offical API](https://platform.deepseek.com/) already 503, you can register a account for [siliconflow](https://cloud.siliconflow.cn/i/wkFOt1Ki), and get a API Key.
 # The Code
 ## 1. Code Configuration
 1. The Python Speech SDK package is available for Windows (x64 and x86), Mac x64 (macOS X version 10.14 or later), Mac arm64 (macOS version 11.0 or later), and Linux
@@ -101,7 +105,9 @@ The conversational speaker uses OpenAI's models to hold a friendly conversation.
         },
 
         "OpenAI": {
-            "Key": "OpenAIKey", 
+            "Key": "OpenAI API Key or DeepSeek API Key",
+            "Model": "OpenAI model name from https://platform.openai.com/docs/models or DeepSeek model name from https://docs.siliconflow.cn/capabilities/reasoning",
+            "ApiBase": "OpenAI not need and DeepSeek is https://api.siliconflow.cn/v1"
         },
 
         // Just choose one of the two OpenAI above

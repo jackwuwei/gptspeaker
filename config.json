@@ -4,27 +4,27 @@
   },
 
   "AzureCognitiveServices": {
-    "Key": "", 
-    "Region": "",
+    "Key": "caa7256a914943ee9542b3769b62271a", 
+    "Region": "eastasia",
     "SpeechRecognitionLanguage": "zh-CN",
     "SpeechSynthesisVoiceName": "zh-CN-XiaochenNeural",
     "Rate": "+15%",
-    "WakePhraseModel": "heygpt.table",
-    "WakeWord": "Hey GPT",
-    "StopWord": "Stop."
+    "WakePhraseModel": "kws.table",
+    "WakeWord": "杰克同学",
+    "StopWord": "停止。"
   },
 
   "AzureOpenAI": {
     "Key": "",
     "api_version": "2024-02-01",
-    "Endpoint": "",
-    "Model": ""
+    "Endpoint": "https://openaiapi000.openai.azure.com/",
+    "Model": "jack_wu_gpt-35-turbo-16k"
   },
 
   "OpenAI": {
-    "Key": "", 
-    "Model": "gpt-3.5-turbo", 
-	  "ApiBase": "",
+    "Key": "sk-pbasxdemucahxvpsipinkpnsxifnyjmpgpywldzwmcbitipn", 
+    "Model": "deepseek-ai/DeepSeek-R1", 
+	  "ApiBase": "https://api.siliconflow.cn/v1",
     "MaxTokens": 4096,
     "Temperature": 0.7,
     "FrequencyPenalty": 0, 
