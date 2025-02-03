@@ -3,8 +3,8 @@
 * The ChatGPT/DeepSeek Voice Assistant uses a Raspberry Pi (or desktop) to enable spoken conversation with OpenAI or DeepSeek large language models. This implementation listens to speech, processes the conversation through the OpenAI/DeepSeek service, and responds back. Like Apple Siri, Amazon Alex, Google Nest Home, Mi XiaoAi etc.
 * This project is written in python which supports Linux/Raspbian, macOS, and Windows.
 # Features
-* Supports real-time voice dialogue. After ChatGPT returns a sentence, you can hear the voice instead of waiting for all ChatGPT/DeepSeek replies before starting the voice synthesis.
-* Support continuous dialogue, save the history of all ChatGPT/DeepSeek current conversations. When the ChatGPT conversation is larger than 4096 tokens (gpt-3.5-turbo), the early conversation history will be discarded.
+* Supports real-time voice dialogue. After ChatGPT/DeepSeek returns a sentence, you can hear the voice instead of waiting for all ChatGPT/DeepSeek replies before starting the voice synthesis.
+* Support continuous dialogue, save the history of all ChatGPT/DeepSeek current conversations. When the ChatGPT/DeepSeek conversation is larger than 4096 tokens (gpt-3.5-turbo), the early conversation history will be discarded.
 * Support local wake word, use it just like Siri.
 # Voice Assistant Speaker
 ![GPT Speaker](/image/IMG_2668.jpg "GPTSpeaker")
@@ -23,7 +23,7 @@
   - [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
     - **$2.19 / 1M tokens**: DeepSeek R1
 # Setup
-* You will need an instance of Azure Cognitive Services and an OpenAI account. You can run the software on nearly any platform, but let's start with a Raspberry Pi.
+* You will need an instance of Azure Cognitive Services and an OpenAI or DeepSeek account. You can run the software on nearly any platform, but let's start with a Raspberry Pi.
 ## Raspberry Pi
 * If you are new to Raspberry Pis, check out this [getting started](https://www.raspberrypi.com/documentation/computers/getting-started.html) guide.
 ### 1. OS

@@ -6,7 +6,7 @@
 
 # 功能
 
-- 支持实时语音对话。在ChatGPT/DeepSeek返回一句话后，你可以听到声音，而不是等待所有ChatGPT回复之后才开始语音合成。
+- 支持实时语音对话。在ChatGPT/DeepSeek返回一句话后，你可以听到声音，而不是等待所有ChatGPT/DeepSeek回复之后才开始语音合成。
 - 支持连续对话，保存所有ChatGPT/DeepSeek当前对话的历史。当对话大于指定的令牌数时，早期对话历史将被丢弃。
 - 支持本地识别唤醒词，就像Siri一样使用。
 
@@ -32,7 +32,7 @@
     - **$2.19 / 1M tokens**: DeepSeek R1
 # 设置
 
-- 你需要一个Azure Cognitive Services实例和一个OpenAI账户。你可以在几乎任何平台上运行软件，但让我们从树莓派开始。
+- 你需要一个Azure Cognitive Services实例和一个OpenAI账号或者DeepSeek账号。你可以在几乎任何平台上运行软件，但让我们从树莓派开始。
 
 ## 树莓派
 
@@ -85,7 +85,7 @@
 
 * 本项目使用OpenAI的GPT模型进行智能对话。以下是创建新账户和访问AI模型的步骤。支持OpenAI官方API或者Azure OpenAI API，二选一即可。
 
-### 1. OpenAI账户
+### 1. OpenAI账号
 
 1. 在网络浏览器中，访问[这里](https://aka.ms/maker/openai)。点击`Sign up`。
    > 注意：可以使用Google账户，Microsoft账户或电子邮件创建新账户。
