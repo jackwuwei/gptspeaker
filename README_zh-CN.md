@@ -148,7 +148,7 @@
    ```
 1. 安装依赖库
     ```bash
-    pip3 -r install requirements.txt
+    pip3 install -r requirements.txt
     ```
 1. 运行代码！
    ```bash
