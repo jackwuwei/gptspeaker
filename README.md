@@ -122,7 +122,7 @@ The [offical API](https://platform.deepseek.com/) already 503, you can register 
     ```
 1. Install requirements
    ```bash
-   pip3 -r install requirements.txt
+   pip3 install -r requirements.txt
    ```
 1. Run the code
    ```bash
