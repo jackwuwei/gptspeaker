@@ -38,19 +38,20 @@
 1. Plug in the USB speaker/microphone if you have not already.
 1. On the Raspberry PI OS desktop, right-click on the volume icon in the top-right of the screen and make sure the USB device is selected.
 1. Right-click on the microphone icon in the top-right of the screen and make sure the USB device is selected.
-## Azure
-The conversational speaker uses Azure Cognitive Service for speech-to-text and text-to-speech. Below are the steps to create an Azure account and an instance of Azure Cognitive Services.
+## Azure AI Speech
+The conversational speaker uses Microsoft Azure AI Speech service for speech-to-text and text-to-speech. Below are the steps to create an Azure account and an Azure AI Speech resource.
+
 ### 1. Azure Account
   1. In a web browser, navigate to https://aka.ms/friendbot/azure and click on `Try Azure for Free`.
   1. Click on `Start Free` to start creating a free Azure account.
   1. Sign in with your Microsoft or GitHub account.
   1. After signing in, you will be prompted to enter some information.
         > NOTE: Even though this is a free account, Azure still requires credit card information. You will not be charged unless you change settings later.
-  1. After your account setup is complete, navigate to https://aka.ms/friendbot/azureportal.
+  1. After your account setup is complete, navigate to https://portal.azure.com.
 
-### 2. Azure Cognitive Services
+### 2. Azure AI Speech
   1. Sign into your account at https://aka.ms/friendbot/azureportal.
-  1. In the search bar at the top, enter `Cognitive Services`. Under `Marketplace` select `Cognitive Services`. (It may take a few seconds to populate.)
+  1. In the search bar at the top, enter `AI Foundry`. Under `More Service` select `Speech Service`. (It may take a few seconds to populate.)
   1. Verify the correct subscription is selected. Under `Resource Group` select `Create New`. Enter a resource group name (e.g. `conv-speak-rg`).
   1. Select a region and a name for your instance of Azure Cognitive Services (e.g. `my-conv-speak-cog-001`). 
         > NOTE: EastUS, WestEurope, or SoutheastAsia are recommended, as those regions tend to support the greatest number of features.  

@@ -55,9 +55,9 @@
 1. 在树莓派OS桌面上，右键点击屏幕右上角的音量图标，确保选择了USB设备。
 1. 右键点击屏幕右上角的麦克风图标，确保选择了USB设备。
 
-## Azure
+## Azure AI Speech
 
-* 本项目使用Azure Cognitive Service进行语音转文本和文本转语音。以下是创建Azure账户和Azure Cognitive Services实例的步骤。
+* 本项目使用Microsoft Azure AI Speech服务进行语音转文本和文本转语音。以下是创建Azure账户和Azure AI Speech资源的步骤。
 
 ### 1. Azure账户
 
@@ -71,7 +71,7 @@
 ### 2. Azure Cognitive Services
 
 1. 在[这个地址](https://aka.ms/friendbot/azureportal) 登录你的账户。
-1. 在顶部的搜索栏中输入`Cognitive Services`。在`Marketplace`下选择`Cognitive Services`。（可能需要几秒钟才能显示。）
+1. 在顶部的搜索栏中输入`AI Foundry`。在`More Service`下选择`语音服务`。（可能需要几秒钟才能显示。）
 1. 确认选择了正确的订阅。在`Resource Group`下选择`Create New`。输入一个资源组名称（例如`conv-speak-rg`）。
 1. 选择一个区域和你的Azure Cognitive Services实例的名称（例如`my-conv-speak-cog-001`）。
    > 注意：建议选择EastAsia或SoutheastAsia，因为这些区域在中国访问比较快。
