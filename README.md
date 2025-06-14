@@ -14,7 +14,7 @@
    - $ for Aux Speaker
    - $ for an SD card (>= 8GB ) (to setup the Raspberry Pi OS)
 * Software
-  - [Azure Cognitive Speech Services](https://aka.ms/friendbot/azurecog)
+  - [Azure AI Speech Services](https://aka.ms/friendbot/azurecog)
     - **Free tier**: 5 audio hours per month and 1 concurrent request. 
     - **Free $200 credit**: With a new Azure account that can be used during the first 30 days.
   - [OpenAI](https://aka.ms/maker/openai/pricing)
@@ -53,7 +53,7 @@ The conversational speaker uses Microsoft Azure AI Speech service for speech-to-
   1. Sign into your account at https://aka.ms/friendbot/azureportal.
   1. In the search bar at the top, enter `AI Foundry`. Under `More Service` select `Speech Service`. (It may take a few seconds to populate.)
   1. Verify the correct subscription is selected. Under `Resource Group` select `Create New`. Enter a resource group name (e.g. `conv-speak-rg`).
-  1. Select a region and a name for your instance of Azure Cognitive Services (e.g. `my-conv-speak-cog-001`). 
+  1. Select a region and a name for your instance of Azure AI Speech Services (e.g. `my-conv-speak-cog-001`). 
         > NOTE: EastUS, WestEurope, or SoutheastAsia are recommended, as those regions tend to support the greatest number of features.  
   1. Click on `Review + Create`. After validation passes, click `Create`.
   1. When deployment has completed you can click `Go to resource` to view your Azure Cognitive Services resource.

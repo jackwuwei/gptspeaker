@@ -22,7 +22,7 @@
   - SD卡（>= 8GB）（设置树莓派OS）
 
 - 软件成本
-  - [Azure Cognitive Speech Services](https://aka.ms/friendbot/azurecog)
+  - [Azure AI Speech Services](https://aka.ms/friendbot/azurecog)
      - **免费层**：每月5个音频小时和1个并发请求。
      - **免费$200美元额度**：新Azure账户在前30天内可以使用。
   - [OpenAI](https://aka.ms/maker/openai/pricing)
@@ -32,7 +32,7 @@
     - **$2.19 / 1M tokens**: DeepSeek R1
 # 设置
 
-- 你需要一个Azure Cognitive Services实例和一个OpenAI账号或者DeepSeek账号。你可以在几乎任何平台上运行软件，但让我们从树莓派开始。
+- 你需要一个Azure AI Speech Services实例和一个OpenAI账号或者DeepSeek账号。你可以在几乎任何平台上运行软件，但让我们从树莓派开始。
 
 ## 树莓派
 
@@ -68,12 +68,12 @@
    > 注意：即使这是一个免费账户，Azure仍然需要信用卡信息。除非你以后更改设置，否则你不会被收费。
 1. 在你的账户设置完成后，访问[这里](https://aka.ms/friendbot/azureportal)。
 
-### 2. Azure Cognitive Services
+### 2. Azure AI Speech Services
 
 1. 在[这个地址](https://aka.ms/friendbot/azureportal) 登录你的账户。
 1. 在顶部的搜索栏中输入`AI Foundry`。在`More Service`下选择`语音服务`。（可能需要几秒钟才能显示。）
 1. 确认选择了正确的订阅。在`Resource Group`下选择`Create New`。输入一个资源组名称（例如`conv-speak-rg`）。
-1. 选择一个区域和你的Azure Cognitive Services实例的名称（例如`my-conv-speak-cog-001`）。
+1. 选择一个区域和你的Azure AI Speech Services实例的名称（例如`my-conv-speak-cog-001`）。
    > 注意：建议选择EastAsia或SoutheastAsia，因为这些区域在中国访问比较快。
 1. 点击`Review + Create`。验证通过后，点击`Create`。
 1. 部署完成后，你可以点击`Go to resource`查看你的Azure Cognitive Services资源。
