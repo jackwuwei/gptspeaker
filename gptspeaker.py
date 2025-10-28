@@ -29,21 +29,37 @@ def load_config():
     except Exception as e:
         print(f"Error loading config: {e}")
 
-# If tokens greater than 4096, then remove history message
+# If tokens greater than max_tokens, remove oldest history messages
 def truncate_conversation(conversation, max_tokens):
+    """
+    Truncate conversation history to fit within token limit.
+    Keeps most recent messages and removes oldest ones.
+
+    Args:
+        conversation: List of message dictionaries with 'role' and 'content'
+        max_tokens: Maximum tokens allowed (reserves 100 tokens for safety margin)
+    """
+    encoding = tiktoken.get_encoding("cl100k_base")
     total_tokens = 0
     truncated_conversation = []
-    encoding = tiktoken.get_encoding("cl100k_base")
 
+    # Iterate from newest to oldest messages
     for message in reversed(conversation):
         message_tokens = len(encoding.encode(message['content']))
-        if total_tokens + message_tokens > max_tokens - 100: 
-            print(f'Total tokens is limit {total_tokens + message_tokens}')
+
+        # Stop if adding this message would exceed the limit
+        if total_tokens + message_tokens > max_tokens - 100:
+            print(f'Token limit reached: {total_tokens + message_tokens} tokens (max: {max_tokens})')
             break
+
         total_tokens += message_tokens
         truncated_conversation.append(message)
 
-    conversation = list(reversed(truncated_conversation))
+    # Reverse back to chronological order and update conversation in-place
+    conversation.clear()
+    conversation.extend(reversed(truncated_conversation))
+
+    print(f'Conversation truncated to {len(conversation)} messages ({total_tokens} tokens)')
 
 # Prompts OpenAI with a request and async send sentences to queue.
 async def ask_openai_async(client, model, prompt, max_token, conversation, queue, ending):
