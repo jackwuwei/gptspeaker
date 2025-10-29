@@ -178,6 +178,9 @@ def create_async_client(config):
 async def chat_with_open_ai():
     # Load config.json
     config = load_config()
+    if config is None:
+        print("Failed to load configuration. Exiting.")
+        return
 
     # Create async client
     client, gpt_model = create_async_client(config=config)
