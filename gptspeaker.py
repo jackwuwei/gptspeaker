@@ -66,7 +66,7 @@ async def ask_openai_async(client, model, prompt, max_token, conversation, queue
     # Append user questions
     conversation.append({"role":"user","content":prompt}) 
 
-    # Count token limit and remove early histroy conversation 
+    # Count token limit and remove early history conversation 
     truncate_conversation(conversation, max_token)
     print(conversation)
     
@@ -160,7 +160,7 @@ def detect_keyword(recognizer, model, keyword, audio_config):
     # Read result audio (incl. the keyword).
     return done
 
-def create_aysnc_client(config):
+def create_async_client(config):
     # Create async OpenAI Client
     if config.OpenAI.Key:
         client = openai.AsyncClient(api_key=config.OpenAI.Key)
@@ -180,7 +180,7 @@ async def chat_with_open_ai():
     config = load_config()
 
     # Create async client
-    client, gpt_model = create_aysnc_client(config=config)
+    client, gpt_model = create_async_client(config=config)
 
     # This example requires config.json
     speech_config = speechsdk.SpeechConfig(subscription=config.AzureCognitiveServices.Key, 
