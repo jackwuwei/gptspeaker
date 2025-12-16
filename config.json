@@ -4,7 +4,7 @@
   },
 
   "AzureCognitiveServices": {
-    "Key": "caa7256a914943ee9542b3769b62271a", 
+    "Key": "", 
     "Region": "eastasia",
     "SpeechRecognitionLanguage": "zh-CN",
     "SpeechSynthesisVoiceName": "zh-CN-XiaochenNeural",
@@ -22,7 +22,7 @@
   },
 
   "OpenAI": {
-    "Key": "sk-pbasxdemucahxvpsipinkpnsxifnyjmpgpywldzwmcbitipn", 
+    "Key": "sk-", 
     "Model": "deepseek-ai/DeepSeek-R1", 
 	  "ApiBase": "https://api.siliconflow.cn/v1",
     "MaxTokens": 4096,
