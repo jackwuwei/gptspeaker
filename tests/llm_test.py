@@ -5,13 +5,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import openai
-from gptspeaker import ask_openai_async, load_config, create_aysnc_client
+from gptspeaker import ask_openai_async, load_config, create_async_client
 
 class TestOpenAI(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         config = load_config()
         self.queue = asyncio.Queue()
-        self.client, self.gpt_model = create_aysnc_client(config=config)
+        self.client, self.gpt_model = create_async_client(config=config)
         self.tokens = config.OpenAI.MaxTokens
         self.conversation = []
 
