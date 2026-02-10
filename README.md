@@ -100,15 +100,24 @@ The [offical API](https://platform.deepseek.com/) already 503, you can register 
 1. Set your API keys: Replace config.json `{AzureCognitiveServices.Key}`and `{AzureCognitiveServices.Region}` with your OpenAI API key and `{OpenAI.Key}` with your OpenAI API key.
     ```json
     {
+         "General": {
+            "SystemPrompt": "You are a friendly, intelligent, and curious assistant who is good at conversation."
+         },
+
          "AzureCognitiveServices": {
             "Key": "AzureCognitiveServicesKey", 
             "Region": "AzureCognitiveServicesRegion",
+            "Rate": "+15%" // Speech rate, e.g. +15% or -10%
         },
 
         "OpenAI": {
             "Key": "OpenAI API Key or DeepSeek API Key",
             "Model": "OpenAI model name from https://platform.openai.com/docs/models or DeepSeek model name from https://docs.siliconflow.cn/capabilities/reasoning",
-            "ApiBase": "OpenAI not need and DeepSeek is https://api.siliconflow.cn/v1"
+            "ApiBase": "OpenAI not need and DeepSeek is https://api.siliconflow.cn/v1",
+            "MaxTokens": 4096,
+            "Temperature": 0.7,
+            "FrequencyPenalty": 0,
+            "PresencePenalty": 0
         },
 
         // Just choose one of the two OpenAI above
