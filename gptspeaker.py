@@ -62,7 +62,7 @@ def truncate_conversation(conversation, max_tokens):
     print(f'Conversation truncated to {len(conversation)} messages ({total_tokens} tokens)')
 
 # Prompts OpenAI with a request and async send sentences to queue.
-async def ask_openai_async(client, model, prompt, max_token, conversation, queue, ending):
+async def ask_openai_async(client, model, prompt, max_token, conversation, queue, ending, config=None):
     # Append user questions
     conversation.append({"role":"user","content":prompt}) 
 
@@ -76,10 +76,24 @@ async def ask_openai_async(client, model, prompt, max_token, conversation, queue
     # Save whole GPT answer
     full_answer = ""
 
+    # Build API parameters
+    api_params = {
+        "model": model,
+        "messages": conversation,
+        "stream": True
+    }
+    
+    # Add optional parameters from config if available
+    if config and hasattr(config, 'OpenAI'):
+        if hasattr(config.OpenAI, 'Temperature'):
+            api_params["temperature"] = config.OpenAI.Temperature
+        if hasattr(config.OpenAI, 'FrequencyPenalty'):
+            api_params["frequency_penalty"] = config.OpenAI.FrequencyPenalty
+        if hasattr(config.OpenAI, 'PresencePenalty'):
+            api_params["presence_penalty"] = config.OpenAI.PresencePenalty
+
     # Ask OpenAI
-    response = await client.chat.completions.create(model=model, 
-                                                   messages=conversation,
-                                                   stream=True)
+    response = await client.chat.completions.create(**api_params)
     
     # iterate through the stream of events
     async for chunk in response:
@@ -103,14 +117,19 @@ async def ask_openai_async(client, model, prompt, max_token, conversation, queue
     conversation.append({"role":"assistant","content":full_answer})
 
 # async read message from queue and synthesized speech
-async def text_to_speech_async(speech_synthesizer, queue):
+async def text_to_speech_async(speech_synthesizer, queue, rate=None):
     while True:
         text = await queue.get()
         if text is EOF:
             break
 
-        # Azure text to speech output
-        speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
+        # Use SSML for rate control if specified
+        if rate:
+            ssml = f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US"><prosody rate="{rate}">{text}</prosody></speak>'
+            speech_synthesis_result = speech_synthesizer.speak_ssml_async(ssml).get()
+        else:
+            # Azure text to speech output
+            speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
 
         # Check result
         if speech_synthesis_result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
@@ -161,18 +180,26 @@ def detect_keyword(recognizer, model, keyword, audio_config):
     return done
 
 def create_async_client(config):
+    """Create async OpenAI Client based on configuration.
+    
+    Returns:
+        tuple: (client, model) or (None, None) if no valid configuration found
+    """
     # Create async OpenAI Client
-    if config.OpenAI.Key:
+    if hasattr(config, 'OpenAI') and config.OpenAI.Key:
         client = openai.AsyncClient(api_key=config.OpenAI.Key)
-        if config.OpenAI.ApiBase:
+        if hasattr(config.OpenAI, 'ApiBase') and config.OpenAI.ApiBase:
             client.base_url = config.OpenAI.ApiBase
         return client, config.OpenAI.Model
-    elif config.AzureOpenAI.Key:
+    elif hasattr(config, 'AzureOpenAI') and config.AzureOpenAI.Key:
         client = openai.AsyncAzureOpenAI(api_key=config.AzureOpenAI.Key,
                                          api_version=config.AzureOpenAI.api_version,
                                          azure_endpoint=config.AzureOpenAI.Endpoint
         )
         return client, config.AzureOpenAI.Model
+    else:
+        print("Error: No valid OpenAI or AzureOpenAI configuration found.")
+        return None, None
 
 # Continuously listens for speech input to recognize and send as text to Azure OpenAI
 async def chat_with_open_ai():
@@ -184,6 +211,9 @@ async def chat_with_open_ai():
 
     # Create async client
     client, gpt_model = create_async_client(config=config)
+    if client is None:
+        print("Failed to create OpenAI client. Exiting.")
+        return
 
     # This example requires config.json
     speech_config = speechsdk.SpeechConfig(subscription=config.AzureCognitiveServices.Key, 
@@ -205,7 +235,16 @@ async def chat_with_open_ai():
 
     # The phrase your keyword recognition model triggers on.
     kws_model = speechsdk.KeywordRecognitionModel(config.AzureCognitiveServices.WakePhraseModel)
+    
+    # Initialize conversation with system prompt if available
     conversation = []
+    if hasattr(config, 'General') and hasattr(config.General, 'SystemPrompt') and config.General.SystemPrompt:
+        conversation.append({"role": "system", "content": config.General.SystemPrompt})
+    
+    # Get speech rate from config
+    speech_rate = None
+    if hasattr(config.AzureCognitiveServices, 'Rate'):
+        speech_rate = config.AzureCognitiveServices.Rate
 
     while True:
         print("OpenAI is listening. Say '{}' to start.".format(config.AzureCognitiveServices.WakeWord))
@@ -235,13 +274,14 @@ async def chat_with_open_ai():
                                                                     config.OpenAI.MaxTokens, 
                                                                     conversation, 
                                                                     queue,
-                                                                    ending_punctuations))
+                                                                    ending_punctuations,
+                                                                    config))
 
                 # Add task done callback, add a EOF message to end
                 task_ask_gpt.add_done_callback(lambda _: queue.put_nowait(EOF))
 
                 # Create async task for Text-to-Speech
-                task_ask_tts = asyncio.create_task(text_to_speech_async(speech_synthesizer, queue))
+                task_ask_tts = asyncio.create_task(text_to_speech_async(speech_synthesizer, queue, speech_rate))
 
                 # Wait all task completed
                 await asyncio.gather(task_ask_gpt, task_ask_tts)

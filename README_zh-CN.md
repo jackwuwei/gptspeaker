@@ -125,16 +125,24 @@
 1. 设置你的API密钥：将config.json中的`{AzureCognitiveServices.Key}`和`{AzureCognitiveServices.Region}`替换为你的OpenAI API密钥，将`{OpenAI.Key}`替换为你的OpenAI API密钥。
    ```json
    {
+      "General": {
+         "SystemPrompt": "你是一个友好、聪明且好奇的助手，擅长对话。"
+      },
       "AzureCognitiveServices": 
       {
          "Key": "AzureCognitiveServicesKey", 
          "Region": "AzureCognitiveServicesRegion",
+         "Rate": "+15%" // 语速，例如 +15% 或 -10%
       },
       "OpenAI": 
       {
          "Key": "OpenAI API Key或者DeepSeek API密钥",
          "Model": "OpenAI模型名称，比如：gpt-3.5-turbo，更多模型参考https://platform.openai.com/docs/models 或者 DeepSeek模型名称，比如：deepseek-ai/DeepSeek-R1，更多模型参考 https://docs.siliconflow.cn/capabilities/reasoning",
-         "ApiBase": "OpenAI不需要填这个字段，如果是DeepSeek的话填https://api.siliconflow.cn/v1" 
+         "ApiBase": "OpenAI不需要填这个字段，如果是DeepSeek的话填https://api.siliconflow.cn/v1",
+         "MaxTokens": 4096,
+         "Temperature": 0.7,
+         "FrequencyPenalty": 0,
+         "PresencePenalty": 0
       },
       // 与上面的OpenAI二选一即可
       "AzureOpenAI": 
